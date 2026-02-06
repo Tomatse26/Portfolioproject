@@ -1,12 +1,10 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Daniel Shen
+- **Dot Number**: shen.2067
+- **Due Date**: 02/06 at 1:50 PM EST
 
 ## Assignment Overview
-
-<!-- TODO: read the assignment overview then delete this comment -->
 
 The overall goal of the portfolio project is to have you design and implement
 your own OSU component. There are no limits to what you choose to design and
@@ -29,8 +27,6 @@ implement.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
-
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
 opening the TODOs window from the sidebar. The icon looks like a tree and will
@@ -52,8 +48,6 @@ to the tree diagram (you may remove this one as well):
 
 ## Assignment Learning Objectives
 
-<!-- TODO: read the assignment learning objectives then delete this comment -->
-
 Without learning objectives, there really is no clear reason why a particular
 assessment or activity exists. Therefore, to be completely transparent, here is
 what we're hoping you will learn through this particular aspect of the portfolio
@@ -66,8 +60,6 @@ project. Specifically, students should be able to:
    discipline
 
 ## Assignment Rubric: 10 Points
-
-<!-- TODO: read the assignment rubric then delete this comment -->
 
 Again, to be completely transparent, most of the portfolio project, except the
 final submission, is designed as a formative assessment. Formative assessments
@@ -106,15 +98,12 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+One of my main interests, especially when it pertains to coding, would have to be video games.
+I have adored them ever since I was just a little kid, and I would love to make them one day.
+I am also a big fan of Dunegons and Dragons, and definately have some ideas for some things that
+could possibly help me while I'm Dungeon mastering for my friends.
 
 ## Assignment
-
-<!-- TODO: read the assignment section then delete this comment -->
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
@@ -122,7 +111,6 @@ that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
 
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -142,8 +130,6 @@ list-like components that have different ways of manipulating the data. Think
 about different ways you might allow a client to manipulate your component.
 
 ### Example Component
-
-<!-- TODO: review this example component then delete this comment -->
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -211,68 +197,85 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: Fighting Game Action Determiner
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Intakes keyboard/controller inputs for a fighting game, allowing for multiple inputs at the same time.
+    - meant for determining combo attacks in 2d fighting games, Ex: shoryuken input, Hadoken Input.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - Add input
+    - remove inputs
+    - getAllActiveInputs
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - generateAttack
+    - DetermineButton
+    - DetermineDirection
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, in order to be able to intake and store new inputs from a controller.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, it will rely on a storage system to store all inputs (likely sequence or queue)
+      - may also use set in order to store all the combo moves
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Probably, something like "miliseconds before input erased from queue"
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Most likley, because the kernel methods are just for managing the move order itself.
+      - Should be able to read through a theoretical instance and code properly.
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: dndMusicQueuer
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - A program that can intake a bunch of audio files, play them at lesiure.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - playNextSong
+    - AddSongtoList
+    - addList
+    - removeSongfromList
+    - removeList
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - userQuickSwitch
+    - changeList
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. You would be able to add and remove songs very quickly, and also change which of the songs is playing
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - the Design I'm thinking of is building it on top of Map<String, Queue <String> >
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Probably not, since it's going to be mostly free flowing and more of a manager than a calculator.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Probably, since the secondary methods are more about user control and we can infer what the kernal methods do.
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: taskEfficiencyCalculator
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - A calculator for GTA Online where the player inputs the time they spend doing a specific task, and the amount of money that leads to, so the player can cut out inneficient tasks and maximize profits.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - addActivity
+    - updateTime
+    - updateGain
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - updateTimeAndGain
+    - rankEfficiency
+    - totalPlayerEfficiency
+    - calculateIRLProfit (how much you've made in Shark Cards)
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, becasue it is constantly changing as the user adds more time and money they've earned.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - It would most likely be, I think, a 2D Sequence, with one sequence containing all the task names, another contianing all the time spent, and another the money gained.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Minutes in an hour, probably. GTA dollar to USD conversion rate.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Definately, since a lot of the secondary methods are just us working with the data, and we can assume kernel methods work with the one that does rely on it.
 
 ## Post-Assignment
 
@@ -320,7 +323,6 @@ of development.
 
 ### Submission
 
-<!-- TODO: read the submission instructions then delete this comment -->
 
 If you have completed the assignment using this template, we recommend that
 you convert it to a PDF before submission. If you're not sure how, check out
@@ -333,8 +335,6 @@ you have to submit any PDFs.
 <!-- TODO: upload a PDF of this document and the CHANGELOG to Carmen then delete this comment -->
 
 ### Peer Review
-
-<!-- TODO: review the peer review guidelines then delete this comment -->
 
 Following the completion of this assignment, you will be assigned three
 students' component brainstorming assignments for review. Your job during the
@@ -360,8 +360,6 @@ PDF to read this rubric as a table).
 If you'd like to give feedback for this assignment (or any assignment, really),
 make use of [this survey][survey]. Your feedback helps make assignments
 better for future students.
-
-<!-- TODO: follow the link to share your feedback then delete this comment -->
 
 [example-components]: https://therenegadecoder.com/code/the-never-ending-list-of-small-programming-project-ideas/
 [markdown-to-pdf-guide]: https://therenegadecoder.com/blog/how-to-convert-markdown-to-a-pdf-3-quick-solutions/
