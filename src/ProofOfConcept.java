@@ -106,6 +106,7 @@ public final class ProofOfConcept {
             if (joystickSubinput.indexOf(numberInput) >= 0) {
                 move = movesMap.value(possibleInput);
             }
+            inputQueue.clear();
         }
         return move;
 
