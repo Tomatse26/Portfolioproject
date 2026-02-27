@@ -71,8 +71,7 @@ public final class ProofOfConcept {
      *
      * @param input
      *            The button to be pressed.
-     * @return The proper move that should be outputted based off of the given
-     *         inputs.
+     * @return Generated Attack
      */
     private String generateAttack(String input) {
 
@@ -109,7 +108,6 @@ public final class ProofOfConcept {
             this.inputQueue.clear();
         }
         return move;
-
     }
 
     /**
