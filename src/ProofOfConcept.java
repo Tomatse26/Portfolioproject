@@ -19,29 +19,22 @@ import components.simplewriter.SimpleWriter1L;
  *
  */
 public final class ProofOfConcept {
-
     /**
-     * Queue that tracks all joystick inputs.
+     * No argument constructor--private to prevent instantiation.
      */
-    private Queue<String> inputQueue = new Queue1L<>();
-    /**
-     * Map containing all the fighting game moves.
-     */
-    private Map<String, String> movesMap = new Map1L<>();
-
-    /**
-     * No argument constructor--private to prevent instan214tiation.
-     */
-    public ProofOfConcept() {
+    private ProofOfConcept() {
     }
 
     /**
      * Removes excess inputs from the queue.
+     *
+     * @param inputQueue
+     *            the input queue.
      */
-    private void removeInputs() {
+    private static void removeInputs(Queue<String> inputQueue) {
         final int maxAmount = 7;
-        while (this.inputQueue.length() > maxAmount) {
-            this.inputQueue.dequeue();
+        while (inputQueue.length() > maxAmount) {
+            inputQueue.dequeue();
         }
 
         //In the final method, will also dequeue inputs deemed "Too old".
@@ -51,15 +44,17 @@ public final class ProofOfConcept {
     /**
      * Intakes a Queue of strings and then returns string representation of it.
      *
+     * @param inputQueue
+     *            Queue that is inported to be converted into a string.
      * @return A string representation of inputQueue.
      */
-    private String getAllActiveInputs() {
+    private static String getAllActiveInputs(Queue<String> inputQueue) {
         String returnVal = "";
 
-        for (int i = 0; i < this.inputQueue.length(); i++) {
-            String item = this.inputQueue.dequeue();
+        for (int i = 0; i < inputQueue.length(); i++) {
+            String item = inputQueue.dequeue();
             returnVal += item;
-            this.inputQueue.enqueue(item);
+            inputQueue.enqueue(item);
         }
 
         return returnVal;
@@ -69,21 +64,26 @@ public final class ProofOfConcept {
      * A method that intakes all necessary information and then returns the
      * thing.
      *
+     * @param movesMap
+     *            The map containing all the moves.
+     * @param inputQueue
+     *            All the viable controller inputs.
      * @param input
      *            The button to be pressed.
      * @return The proper move that should be outputted based off of the given
      *         inputs.
      */
-    private String generateAttack(String input) {
+    private static String generateAttack(Map<String, String> movesMap,
+            Queue<String> inputQueue, String input) {
 
         // Establishing correct Variables.
-        String joystickInputs = this.getAllActiveInputs();
+        String joystickInputs = getAllActiveInputs(inputQueue);
         String move = "None";
         Sequence<String> possibleInputs = new Sequence1L<String>();
 
         //Determining all the moves that are possible given an input.
         //sorted by priority through insertion sort.
-        for (Map.Pair<String, String> pair : this.movesMap) {
+        for (Map.Pair<String, String> pair : movesMap) {
             if (pair.key().indexOf(input) >= 0) {
                 int index = 0;
                 while (index < possibleInputs.length() && pair.key()
@@ -104,9 +104,9 @@ public final class ProofOfConcept {
                         joystickInputs.length() - possibleInput.length());
             }
             if (joystickSubinput.indexOf(numberInput) >= 0) {
-                move = this.movesMap.value(possibleInput);
+                move = movesMap.value(possibleInput);
             }
-            this.inputQueue.clear();
+            inputQueue.clear();
         }
         return move;
 
@@ -121,21 +121,23 @@ public final class ProofOfConcept {
      * @param args
      *
      */
-    public void main(String[] args) {
+    public static void main(String[] args) {
         SimpleWriter out = new SimpleWriter1L();
         SimpleReader in = new SimpleReader1L();
 
+        Map<String, String> movesMap = new Map1L<>();
+        Queue<String> inputQueue = new Queue1L<>();
         String input;
 
-        this.movesMap.add("p", "punch");
-        this.movesMap.add("2p", "Crouch Punch");
-        this.movesMap.add("k", "kick");
-        this.movesMap.add("2k", "Crouch Kick");
-        this.movesMap.add("236p", "Hadouken");
-        this.movesMap.add("214p", "Evil Hadouken");
-        this.movesMap.add("236k", "AIR TATSUMAKI!!!");
-        this.movesMap.add("214k", "Shoryuken");
-        this.movesMap.add("214214p", "Summon Zangief");
+        movesMap.add("p", "punch");
+        movesMap.add("2p", "Crouch Punch");
+        movesMap.add("k", "kick");
+        movesMap.add("2k", "Crouch Kick");
+        movesMap.add("236p", "Hadouken");
+        movesMap.add("214p", "Evil Hadouken");
+        movesMap.add("236k", "AIR TATSUMAKI!!!");
+        movesMap.add("214k", "Shoryuken");
+        movesMap.add("214214p", "Summon Zangief");
 
         out.println("Please enter an input chain");
         input = in.nextLine();
@@ -143,14 +145,15 @@ public final class ProofOfConcept {
             for (int i = 0; i < input.length(); i++) {
                 if (input.substring(i, i + 1).equals("k")
                         || input.substring(i, i + 1).equals("p")) {
-                    out.println(this.generateAttack(input.substring(i, i + 1)));
+                    out.println(generateAttack(movesMap, inputQueue,
+                            input.substring(i, i + 1)));
 
                 } else {
-                    this.inputQueue.enqueue(input.substring(i, i + 1));
-                    this.removeInputs();
+                    inputQueue.enqueue(input.substring(i, i + 1));
+                    removeInputs(inputQueue);
                 }
             }
-            this.inputQueue.clear();
+            inputQueue.clear();
             out.println("Please enter an input chain");
             input = in.nextLine();
         }
