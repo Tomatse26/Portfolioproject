@@ -10,7 +10,7 @@
  * </pre>
  *
  */
-public interface FGCompilerKernelInterface {
+public interface FGParserKernel {
 
     /**
      * Adds {@code k} to the back of {@code this}.

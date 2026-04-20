@@ -1,9 +1,9 @@
 
 /**
- * {@code FG CompileKernel} enhanced with secondary methods, giving capability
+ * {@code FGParserKernel} enhanced with secondary methods, giving capability
  * to parse moves based on movement and button imputs.
  */
-public interface FGCompiler extends FGCompilerKernel {
+public interface FGParser extends FGParserKernel {
 
     /**
      * generates an attack based on {@code this} given the input {@code button}.
