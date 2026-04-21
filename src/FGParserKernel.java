@@ -43,7 +43,7 @@ public interface FGParserKernel {
 
     /**
      * Clears {@code this}.
-     * 
+     *
      * @clears this
      * @ensures this = {}
      */
