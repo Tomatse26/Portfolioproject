@@ -84,6 +84,13 @@ the following form: YYYY.0M.0D.
 - Designed a Fighting Game Action Determiner component
 - Designed a dndMusicQueuer component
 - Designed a taskEfficiencyCalculator component
+
+## [2026.04.20]
+
+### Added
+
+- Designed interface class for Fighting Game Action Determiner
+- Gave Fighting Game Action Determiner component the name FGParser
 ```
 
 [unreleased]: https://github.com/jrg94/portfolio-project/compare/v2024.08.07...HEAD
