@@ -40,21 +40,11 @@ public class FGParser1 extends FGParserSecondary {
     @Override
     public String getActiveInputs() {
         StringBuilder val = new StringBuilder();
-        this.extractOldInputs();
-
-        int length = this.rep.length();
-        for (int i = 0; i < length; i++) {
-            int num = this.rep.dequeue();
-            val.append(num);
-            this.rep.enqueue(num);
-        }
-
-        return val.toString();
+        return null;
     }
 
     @Override
     public void clearInputs() {
-        this.rep.clear();
 
     }
 }
