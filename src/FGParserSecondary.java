@@ -56,11 +56,11 @@ public abstract class FGParserSecondary implements FGParser {
         }
         returnVal.append("}");
 
-        if (movesMapExists) {
-            returnVal.append(" MovesMap: " + movesMap.toString());
+        if (this.movesMapExists) {
+            returnVal.append(" MovesMap: " + this.movesMap.toString());
         }
 
-        return returnVal;
+        return returnVal.toString();
     }
 
     /**
@@ -70,31 +70,31 @@ public abstract class FGParserSecondary implements FGParser {
     //CHECKSTYLE: ALLOWS THIS METHOD TO BE OVERRIDEN
     @Override
     public void newMovesMap() {
-        movesMap = new Map1L<>();
+        this.movesMap = new Map1L<>();
     }
 
     //CHECKSTYLE: ALLOWS THIS METHOD TO BE OVERRIDEN
     @Override
     public void addMove(String input, String name) {
-        movesMap.add(name, input);
+        this.movesMap.add(name, input);
     }
 
     //CHECKSTYLE: ALLOWS THIS METHOD TO BE OVERRIDEN
     @Override
     public void deleteMove(String name) {
-        movesMap.remove(name);
+        this.movesMap.remove(name);
     }
 
     //CHECKSTYLE: ALLOWS THIS METHOD TO BE OVERRIDEN
     @Override
     public String getInput(String name) {
-        return movesMap.value(name);
+        return this.movesMap.value(name);
     }
 
     //CHECKSTYLE: ALLOWS THIS METHOD TO BE OVERRIDEN
     @Override
-    public String getName(String input) {
-        return movesMap.key(input);
+    public String getMove(String input) {
+        return this.movesMap.key(input);
     }
 
     //CHECKSTYLE: ALLOWS THIS METHOD TO BE OVERRIDEN
