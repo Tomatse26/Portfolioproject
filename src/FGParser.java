@@ -68,12 +68,11 @@ public interface FGParser extends FGParserKernel {
     String getInput(String name);
 
     /**
-     * Deletes all the moves currently saved in the object without deleting the
-     * input queue.
+     * Resets the MovesMap to a baseState, creating a new one if necessary.
      *
      * @clears this.moves
      * @ensures this.moves = {}
      */
-    void clearMoves();
+    void newMovesMap();
 
 }

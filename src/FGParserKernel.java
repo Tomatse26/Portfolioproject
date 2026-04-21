@@ -41,4 +41,12 @@ public interface FGParserKernel {
      */
     String getActiveInputs();
 
+    /**
+     * Clears {@code this}.
+     *
+     * @clears this
+     * @ensures this = {}
+     */
+    void clearInputs();
+
 }

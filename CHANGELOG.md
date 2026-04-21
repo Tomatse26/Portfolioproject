@@ -91,6 +91,13 @@ the following form: YYYY.0M.0D.
 
 - Designed interface class for Fighting Game Action Determiner
 - Gave Fighting Game Action Determiner component the name FGParser
+
+## [2026.04.20]
+
+### Added
+
+- Designed Secondary, abstract class for FG Parser.
+- Updated FGParser and FGParser Kernel, adding/altering methods.
 ```
 
 [unreleased]: https://github.com/jrg94/portfolio-project/compare/v2024.08.07...HEAD
