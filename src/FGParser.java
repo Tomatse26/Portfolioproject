@@ -1,7 +1,7 @@
 
 /**
- * {@code FGParserKernel} enhanced with secondary methods, giving capability
- * to parse moves based on movement and button imputs.
+ * {@code FGParserKernel} enhanced with secondary methods, giving capability to
+ * parse moves based on movement and button imputs.
  */
 public interface FGParser extends FGParserKernel {
 
@@ -34,7 +34,8 @@ public interface FGParser extends FGParserKernel {
     void addMove(String input, String name);
 
     /**
-     * Deletes the move with the name from the program.
+     * Move with given {@code name} dies and doesn't come back (it is deleted
+     * without returning the value).
      *
      * @param name
      *            Name of move to be deleted.
