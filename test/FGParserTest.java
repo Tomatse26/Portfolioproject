@@ -627,6 +627,36 @@ public class FGParserTest {
     }
 
     /**
+     * testing generate attack with two moves, with possibility for most complex
+     * move.
+     */
+    @Test
+    public final void testGenerateAttack5() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+
+        test.addMove("p", "punch");
+        base.addMove("p", "punch");
+
+        test.addMove("236p", "hadouken");
+        base.addMove("236p", "hadouken");
+
+        String sampleInput = "236";
+        for (int i = 0; i < sampleInput.length(); i++) {
+            test.addInput(Integer.parseInt(sampleInput.substring(i, i + 1)));
+        }
+
+        String testResult = test.generateAttack("k");
+
+        assertEquals(test.toString(), base.toString());
+        assertEquals(testResult, "hadouken");
+
+    }
+
+    /**
      * testing generate attack occuring twice.
      */
     @Test
@@ -657,36 +687,6 @@ public class FGParserTest {
         assertEquals(test.toString(), base.toString());
         assertEquals(testResult1, "hadouken");
         assertEquals(testResult2, "kick");
-
-    }
-
-    /**
-     * testing generate attack with two moves, with possibility for most complex
-     * move.
-     */
-    @Test
-    public final void testGenerateAttack5() {
-        FGParser test = new FGParser1();
-        FGParser base = new FGParser1();
-
-        test.newMovesMap();
-        base.newMovesMap();
-
-        test.addMove("p", "punch");
-        base.addMove("p", "punch");
-
-        test.addMove("236p", "hadouken");
-        base.addMove("236p", "hadouken");
-
-        String sampleInput = "236";
-        for (int i = 0; i < sampleInput.length(); i++) {
-            test.addInput(Integer.parseInt(sampleInput.substring(i, i + 1)));
-        }
-
-        String testResult = test.generateAttack("k");
-
-        assertEquals(test.toString(), base.toString());
-        assertEquals(testResult, "hadouken");
 
     }
 
