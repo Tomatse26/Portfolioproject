@@ -296,4 +296,240 @@ public class FGParserTest {
 
     // testing secondary methods ------------------------------------------
 
+    /**
+     * testing newMovesMap to create an empty movesMap.
+     */
+    @Test
+    public final void testNewMovesMap() {
+        FGParser test = new FGParser1();
+
+        test.newMovesMap();
+
+        assertEquals(test.toString(), "Current Input Queue: {} MovesMap: {}");
+    }
+
+    /**
+     * testing newMovesMap to create an empty movesMap with input in input
+     * queue.
+     */
+    @Test
+    public final void testNewMovesMapWithInputs() {
+        FGParser test = new FGParser1();
+
+        test.addInput(1);
+        test.newMovesMap();
+
+        assertEquals(test.toString(), "Current Input Queue: {1} MovesMap: {}");
+    }
+
+    /**
+     * testing addMove to add a move.
+     */
+    @Test
+    public final void testAddMoveOnce() {
+        FGParser test = new FGParser1();
+
+        test.newMovesMap();
+        test.addMove("236p", "hadouken");
+
+        assertEquals(test.toString(),
+                "Current Input Queue: {} MovesMap: {(hadouken,236p)}");
+    }
+
+    /**
+     * testing deleteMove with only one item.
+     */
+    @Test
+    public final void testDeleteMoveEmpty() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+        test.addMove("236p", "hadouken");
+        test.deleteMove("hadouken");
+
+        assertEquals(test.toString(), base.toString());
+    }
+
+    /**
+     * testing deleteMove with two items.
+     */
+    @Test
+    public final void testDeleteMoveOne() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+        test.addMove("236p", "hadouken");
+        test.addMove("214k", "Tatsumaki");
+        base.addMove("214k", "Tatsumaki");
+        test.deleteMove("hadouken");
+
+        assertEquals(test.toString(), base.toString());
+    }
+
+    /**
+     * testing deleting multiple moves.
+     */
+    @Test
+    public final void testDeleteMoveMultiple() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+        test.addMove("236p", "hadouken");
+        test.addMove("214k", "Tatsumaki");
+        test.addMove("p", "punch");
+        base.addMove("214k", "Tatsumaki");
+        test.deleteMove("hadouken");
+        test.deleteMove("punch");
+
+        assertEquals(test.toString(), base.toString());
+    }
+
+    /**
+     * testing getting input with one item in map.
+     */
+    @Test
+    public final void testGetInputSingular() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+        test.addMove("236p", "hadouken");
+        base.addMove("236p", "hadouken");
+
+        String testResult = test.getInput("hadouken");
+
+        assertEquals(testResult, "236p");
+        assertEquals(base.toString(), test.toString());
+
+    }
+
+    /**
+     * testing getting input with two items in map.
+     */
+    @Test
+    public final void testGetInputTwo() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+        test.addMove("236p", "hadouken");
+        test.addMove("214k", "Tatsumaki");
+        base.addMove("236p", "hadouken");
+        base.addMove("214k", "Tatsumaki");
+
+        String testResult = test.getInput("Tatsumaki");
+
+        assertEquals(testResult, "214k");
+        assertEquals(base.toString(), test.toString());
+
+    }
+
+    /**
+     * testing getting input with many items in map.
+     */
+    @Test
+    public final void testGetInputMany() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+
+        test.addMove("236p", "hadouken");
+        test.addMove("p", "punch");
+        test.addMove("k", "kick");
+        test.addMove("2p", "dick punch");
+        test.addMove("214k", "Tatsumaki");
+        base.addMove("236p", "hadouken");
+        base.addMove("214k", "Tatsumaki");
+        base.addMove("p", "punch");
+        base.addMove("k", "kick");
+        base.addMove("2p", "dick punch");
+
+        String testResult = test.getInput("dick punch");
+
+        assertEquals(testResult, "2p");
+        assertEquals(base.toString(), test.toString());
+
+    }
+
+    /**
+     * testing getting name with one item in map.
+     */
+    @Test
+    public final void testGetNameSingular() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+        test.addMove("236p", "hadouken");
+        base.addMove("236p", "hadouken");
+
+        String testResult = test.getMove("236p");
+
+        assertEquals(testResult, "hadouken");
+        assertEquals(base.toString(), test.toString());
+
+    }
+
+    /**
+     * testing getting name with two items in map.
+     */
+    @Test
+    public final void testGetNameTwo() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+        test.addMove("236p", "hadouken");
+        test.addMove("214k", "Tatsumaki");
+        base.addMove("236p", "hadouken");
+        base.addMove("214k", "Tatsumaki");
+
+        String testResult = test.getMove("214k");
+
+        assertEquals(testResult, "Tatsumaki");
+        assertEquals(base.toString(), test.toString());
+
+    }
+
+    /**
+     * testing getting name with many items in map.
+     */
+    @Test
+    public final void testGetNameMany() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+
+        test.addMove("236p", "hadouken");
+        test.addMove("p", "punch");
+        test.addMove("k", "kick");
+        test.addMove("2p", "dick punch");
+        test.addMove("214k", "Tatsumaki");
+        base.addMove("236p", "hadouken");
+        base.addMove("214k", "Tatsumaki");
+        base.addMove("p", "punch");
+        base.addMove("k", "kick");
+        base.addMove("2p", "dick punch");
+
+        String testResult = test.getMove("p");
+
+        assertEquals(testResult, "punch");
+        assertEquals(base.toString(), test.toString());
+
+    }
+
 }

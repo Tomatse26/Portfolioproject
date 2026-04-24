@@ -73,6 +73,7 @@ public abstract class FGParserSecondary implements FGParser {
     @Override
     public void newMovesMap() {
         this.movesMap = new Map1L<>();
+        this.movesMapExists = true;
     }
 
     //CHECKSTYLE: ALLOWS THIS METHOD TO BE OVERRIDEN
