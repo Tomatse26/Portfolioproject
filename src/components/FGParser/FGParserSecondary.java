@@ -118,7 +118,7 @@ public abstract class FGParserSecondary implements FGParser {
                         .length() > possibleInputs.entry(index).length()) {
                     index += 1;
                 }
-                possibleInputs.add(index, pair.key());
+                possibleInputs.add(index, pair.value());
             }
         }
 
@@ -132,7 +132,7 @@ public abstract class FGParserSecondary implements FGParser {
                         joystickInputs.length() - possibleInput.length());
             }
             if (joystickSubinput.indexOf(numberInput) >= 0) {
-                move = this.movesMap.value(possibleInput);
+                move = this.movesMap.key(possibleInput);
             }
         }
         this.clearInputs();

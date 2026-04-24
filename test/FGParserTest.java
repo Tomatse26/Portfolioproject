@@ -532,4 +532,162 @@ public class FGParserTest {
 
     }
 
+    /**
+     * testing generate attack with only one move and no inputs.
+     */
+    @Test
+    public final void testGenerateAttack1() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+
+        test.addMove("p", "punch");
+        base.addMove("p", "punch");
+
+        String testResult = test.generateAttack("p");
+
+        assertEquals(test.toString(), base.toString());
+        assertEquals(testResult, "punch");
+
+    }
+
+    /**
+     * testing generate attack with two moves with different buttons.
+     */
+    @Test
+    public final void testGenerateAttack2() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+
+        test.addMove("p", "punch");
+        base.addMove("p", "punch");
+
+        test.addMove("k", "kick");
+        base.addMove("k", "kick");
+
+        String testResult = test.generateAttack("k");
+
+        assertEquals(test.toString(), base.toString());
+        assertEquals(testResult, "kick");
+
+    }
+
+    /**
+     * testing generate attack with two moves with same button, with one being
+     * impossible.
+     */
+    @Test
+    public final void testGenerateAttack3() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+
+        test.addMove("p", "punch");
+        base.addMove("p", "punch");
+
+        test.addMove("236p", "hadouken");
+        base.addMove("236p", "hadouken");
+
+        String testResult = test.generateAttack("p");
+
+        assertEquals(test.toString(), base.toString());
+        assertEquals(testResult, "punch");
+
+    }
+
+    /**
+     * testing generate attack with button that does not exist.
+     */
+    @Test
+    public final void testGenerateAttack4() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+
+        test.addMove("p", "punch");
+        base.addMove("p", "punch");
+
+        test.addMove("236p", "hadouken");
+        base.addMove("236p", "hadouken");
+
+        String testResult = test.generateAttack("k");
+
+        assertEquals(test.toString(), base.toString());
+        assertEquals(testResult, "None");
+
+    }
+
+    /**
+     * testing generate attack occuring twice.
+     */
+    @Test
+    public final void testGenerateAttack6() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+
+        test.addMove("p", "punch");
+        base.addMove("p", "punch");
+
+        test.addMove("236p", "hadouken");
+        base.addMove("236p", "hadouken");
+
+        test.addMove("k", "kick");
+        base.addMove("k", "kick");
+
+        String sampleInput = "236";
+        for (int i = 0; i < sampleInput.length(); i++) {
+            test.addInput(Integer.parseInt(sampleInput.substring(i, i + 1)));
+        }
+
+        String testResult1 = test.generateAttack("p");
+        String testResult2 = test.generateAttack("k");
+
+        assertEquals(test.toString(), base.toString());
+        assertEquals(testResult1, "hadouken");
+        assertEquals(testResult2, "kick");
+
+    }
+
+    /**
+     * testing generate attack with two moves, with possibility for most complex
+     * move.
+     */
+    @Test
+    public final void testGenerateAttack5() {
+        FGParser test = new FGParser1();
+        FGParser base = new FGParser1();
+
+        test.newMovesMap();
+        base.newMovesMap();
+
+        test.addMove("p", "punch");
+        base.addMove("p", "punch");
+
+        test.addMove("236p", "hadouken");
+        base.addMove("236p", "hadouken");
+
+        String sampleInput = "236";
+        for (int i = 0; i < sampleInput.length(); i++) {
+            test.addInput(Integer.parseInt(sampleInput.substring(i, i + 1)));
+        }
+
+        String testResult = test.generateAttack("k");
+
+        assertEquals(test.toString(), base.toString());
+        assertEquals(testResult, "hadouken");
+
+    }
+
 }
