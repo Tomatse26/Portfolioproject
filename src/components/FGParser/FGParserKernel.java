@@ -1,3 +1,4 @@
+package components.FGParser;
 
 /**
  * FG Comipler Kernel component with primary methods. Includes capability to

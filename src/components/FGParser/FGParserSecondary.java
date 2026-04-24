@@ -1,3 +1,5 @@
+package components.FGParser;
+
 import components.map.Map;
 import components.map.Map1L;
 import components.sequence.Sequence;
@@ -71,6 +73,7 @@ public abstract class FGParserSecondary implements FGParser {
     @Override
     public void newMovesMap() {
         this.movesMap = new Map1L<>();
+        this.movesMapExists = true;
     }
 
     //CHECKSTYLE: ALLOWS THIS METHOD TO BE OVERRIDEN
@@ -109,13 +112,13 @@ public abstract class FGParserSecondary implements FGParser {
         //Determining all the moves that are possible given an input.
         //sorted by priority through insertion sort.
         for (Map.Pair<String, String> pair : this.movesMap) {
-            if (pair.key().indexOf(input) >= 0) {
+            if (pair.value().indexOf(button) >= 0) {
                 int index = 0;
-                while (index < possibleInputs.length() && pair.key()
+                while (index < possibleInputs.length() && pair.value()
                         .length() > possibleInputs.entry(index).length()) {
                     index += 1;
                 }
-                possibleInputs.add(index, pair.key());
+                possibleInputs.add(index, pair.value());
             }
         }
 
@@ -129,7 +132,7 @@ public abstract class FGParserSecondary implements FGParser {
                         joystickInputs.length() - possibleInput.length());
             }
             if (joystickSubinput.indexOf(numberInput) >= 0) {
-                move = this.movesMap.value(possibleInput);
+                move = this.movesMap.key(possibleInput);
             }
         }
         this.clearInputs();

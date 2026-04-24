@@ -1,3 +1,4 @@
+package components.FGParser;
 
 /**
  * {@code FGParserKernel} enhanced with secondary methods, giving capability to

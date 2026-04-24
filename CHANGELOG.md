@@ -98,6 +98,22 @@ the following form: YYYY.0M.0D.
 
 - Designed Secondary, abstract class for FG Parser.
 - Updated FGParser and FGParser Kernel, adding/altering methods.
+
+## [2026.04.23]
+
+### Added
+- Designed Kernel Implementation for FG Parser
+
+## [2026.04.24]
+
+### Added
+- Test Fixtures for FGParser
+- FGparser Demo1
+- FGParser Demo2
+
+### Updated
+- Bugfixed FGParser Secondary
+
 ```
 
 [unreleased]: https://github.com/jrg94/portfolio-project/compare/v2024.08.07...HEAD
