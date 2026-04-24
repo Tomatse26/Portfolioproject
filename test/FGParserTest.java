@@ -649,7 +649,7 @@ public class FGParserTest {
             test.addInput(Integer.parseInt(sampleInput.substring(i, i + 1)));
         }
 
-        String testResult = test.generateAttack("k");
+        String testResult = test.generateAttack("p");
 
         assertEquals(test.toString(), base.toString());
         assertEquals(testResult, "hadouken");
