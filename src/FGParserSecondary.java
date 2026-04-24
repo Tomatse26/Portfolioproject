@@ -109,7 +109,7 @@ public abstract class FGParserSecondary implements FGParser {
         //Determining all the moves that are possible given an input.
         //sorted by priority through insertion sort.
         for (Map.Pair<String, String> pair : this.movesMap) {
-            if (pair.key().indexOf(input) >= 0) {
+            if (pair.key().indexOf(button) >= 0) {
                 int index = 0;
                 while (index < possibleInputs.length() && pair.key()
                         .length() > possibleInputs.entry(index).length()) {
