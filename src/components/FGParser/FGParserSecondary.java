@@ -1,3 +1,5 @@
+package components.FGParser;
+
 import components.map.Map;
 import components.map.Map1L;
 import components.sequence.Sequence;
